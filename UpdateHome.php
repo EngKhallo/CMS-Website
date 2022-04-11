@@ -3,17 +3,25 @@ include './config/connection.php';
 
 $conn = connect();
 
-if (isset($_GET['delete'])) :
-    $id = $_GET['delete'];
+if(isset($_POST['submit'])):
+    $id = $_POST['id'];
+    $about = $_POST['about'];
+    $image = $_POST['image'];
 
-    $sql = "DELETE FROM student WHERE id= $id";
+    $sql = "UPDATE home SET About='$about', Image='$image' WHERE id=$id";
     $result = mysqli_query($conn, $sql);
 
-    if (!$result) header("Location: ./view.php?error=true");
-    if ($result) header("Location: ./view.php?msg=success");
+    if($result) header("Location: ViewHome.php?update_id=$id");
+    if(!$result) header("Location: UpdateHome.php?update_id=$id");
 endif;
-$query = "SELECT * FROM home";
-$result = mysqli_query($conn, $query);
+
+if(isset($_GET['update_id'])):
+    $id = $_GET['update_id'];
+
+    $sql = "SELECT * FROM home where id=$id";
+    $result = mysqli_query($conn, $sql);
+
+    $row = mysqli_fetch_object($result);
 
 ?>
 
@@ -206,42 +214,29 @@ $result = mysqli_query($conn, $query);
                             <!-- [ Main Content ] start -->
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <!-- [ basic-table ] start -->
-                                    <div class="col-xl-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h5>Home Contents</h5>
-                                            </div>
-                                            <div class="card-block table-border-style">
-                                                <div class="table-responsive">
-                                                    <table class="table table-striped table-bordered zero-configuration">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>About</th>
-                                                                <th>Image</th>
-                                                                <th>Update</th>
-                                                                <th>Delete</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php while ($row = mysqli_fetch_object($result)) : ?>
-                                                                <tr>
-                                                                    <td><?php echo $row->About; ?></td>
-                                                                    <td>
-                                                                        <img src="<?php echo 'Images/' . $row->Image; ?>" width="70px" alt="No image">
-                                                                    </td>
-                                                                    <td><a href="UpdateHome.php?update_id=<?php echo $row->id; ?>" class="btn btn-info update">Update</a></td>
-                                                                    <td><a href="#" class="btn btn-danger">Delete</a></td>
-                                                                </tr>
-                                                            <?php endwhile; ?>
-                                                        </tbody>
-                                                    </table>
-
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Update Home Content</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                <form action="UpdateHome.php" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                                                        <label for="text" class="from-label mb-2">Enter Your About:</label>
+                                                        <input type="text" class="form-control input-default mb-4" placeholder="Enter Your About" name="about" value="<?php echo $row->About; ?>">
+                                                        <label for="text" class="from-label mb-2">Enter Image:</label>
+                                                        <input class="form-control" type="file" id="formFile" name="image" value="<?php echo $row->Image;?>">
+                                                        <input type="submit" name="submit" class="btn btn-primary mt-4">
+                                                    </div>
+                                    </form>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
-                                    <!-- [ basic-table ] end -->
+                                    <!-- Input group -->
 
                                 </div>
                             </div>
@@ -258,7 +253,9 @@ $result = mysqli_query($conn, $query);
     <script src="assets/js/vendor-all.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/pcoded.min.js"></script>
-    <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
+
+<?php endif; ?>
