@@ -44,23 +44,23 @@
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
-                        <div><span>Image Project</span></div>
+                        <img src="./img/projects/project_1.jpg" alt="Portolio Image" />
+                        <div><span>Amal Bank</span></div>
                     </figure>
                 </li>
                 <!-- Portfolio Item Ends -->
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
-                        <div><span>Youtube Project</span></div>
+                        <img src="./img/projects/project_2.jpg" alt="Portolio Image" />
+                        <div><span>SomPower</span></div>
                     </figure>
                 </li>
                 <!-- Portfolio Item Ends -->
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/project_3.jpg" alt="Portolio Image" />
                         <div><span>Slider Project</span></div>
                     </figure>
                 </li>
@@ -68,7 +68,7 @@
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/project_4.jpg" alt="Portolio Image" />
                         <div><span>Local Video Project</span></div>
                     </figure>
                 </li>
@@ -76,7 +76,7 @@
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/project_5.jpg" alt="Portolio Image" />
                         <div><span>Image Project</span></div>
                     </figure>
                 </li>
@@ -84,7 +84,7 @@
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/project_6.jpg" alt="Portolio Image" />
                         <div><span>Image Project</span></div>
                     </figure>
                 </li>
@@ -92,7 +92,7 @@
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/project_7.jpg" alt="Portolio Image" />
                         <div><span>Image Project</span></div>
                     </figure>
                 </li>
@@ -100,7 +100,7 @@
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/project_8.jpg" alt="Portolio Image" />
                         <div><span>Image Project</span></div>
                     </figure>
                 </li>
@@ -108,7 +108,7 @@
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/project_9.jpg" alt="Portolio Image" />
                         <div><span>Image Project</span></div>
                     </figure>
                 </li>
@@ -124,7 +124,7 @@
                     <figure>
                         <!-- Project Details Starts -->
                         <figcaption>
-                            <h3>Image Project</h3>
+                            <h3>Human Resource Management System</h3>
                             <div class="row open-sans-font">
                                 <div class="col-12 col-sm-6 mb-2">
                                     <i class="fa fa-file-text-o pr-2"></i><span class="project-label">Project </span>: <span class="ft-wt-600 uppercase">Website</span>
@@ -142,7 +142,7 @@
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <img src="http://via.placeholder.com/895x552.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/project_1.jpg" alt="Portolio Image" />
                         <!-- Main Project Content Ends -->
                     </figure>
                 </li>

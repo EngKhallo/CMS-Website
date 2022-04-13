@@ -1,18 +1,19 @@
 <?php
 include './config/connection.php';
 
-if (isset($_POST) && !empty($_POST)) :
-    $conn = connect();
+$conn = connect();
 
-    $title = $_POST['title'];
-    $percent = $_POST['percent'];
+if (isset($_GET['delete'])) :
+    $id = $_GET['delete'];
 
-    $sql = "INSERT INTO skills (title, percentage)
-            values('$title','$percent')";
+    $sql = "DELETE FROM student WHERE id= $id";
     $result = mysqli_query($conn, $sql);
 
-    if (!$result)  die("Database insertion failed" . mysqli_error($conn));
+    if (!$result) header("Location: ./view.php?error=true");
+    if ($result) header("Location: ./view.php?msg=success");
 endif;
+$query = "SELECT * FROM skills";
+$result = mysqli_query($conn, $query);
 
 ?>
 
@@ -205,30 +206,40 @@ endif;
                             <!-- [ Main Content ] start -->
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>Add New skills Content</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <form method="POST" action="skills.php">
-                                                        <div class="form-group">
-                                                            <label for="name">skills Name: </label>
-                                                            <input type="text" class="form-control" name="title" placeholder="Enter skills">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="percentage">percentage: </label>
-                                                            <input class="form-control" type="number" placeholder="Enter percentage" id="" name="percent">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </form>
+                                    <!-- [ basic-table ] start -->
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>skills Contents</h5>
+                                            </div>
+                                            <div class="card-block table-border-style">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered zero-configuration">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Skill Title</th>
+                                                                <th>Percentage</th>
+                                                                <th>Update</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php while ($row = mysqli_fetch_object($result)) : ?>
+                                                                <tr>
+                                                                    <td><?php echo $row->title; ?></td>
+                                                                    <td><?php echo $row->percentage; ?></td>
+                                                                    <td><a href="Updateskills.php?update_id=<?php echo $row->id; ?>" class="btn btn-info update">Update</a></td>
+                                                                    <td><a href="#" class="btn btn-danger">Delete</a></td>
+                                                                </tr>
+                                                            <?php endwhile; ?>
+                                                        </tbody>
+                                                    </table>
+
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-                                    <!-- Input group -->
+                                    <!-- [ basic-table ] end -->
 
                                 </div>
                             </div>
@@ -240,13 +251,12 @@ endif;
         </div>
     </div>
     <!-- [ Main Content ] end -->
-    <!-- Warning Section Ends -->
 
     <!-- Required Js -->
     <script src="assets/js/vendor-all.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/pcoded.min.js"></script>
-
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

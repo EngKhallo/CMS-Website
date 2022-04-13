@@ -1,18 +1,27 @@
 <?php
 include './config/connection.php';
 
-if (isset($_POST) && !empty($_POST)) :
-    $conn = connect();
+$conn = connect();
 
+if(isset($_POST['submit'])):
+    $id = $_POST['id'];
     $title = $_POST['title'];
     $percent = $_POST['percent'];
 
-    $sql = "INSERT INTO skills (title, percentage)
-            values('$title','$percent')";
+    $sql = "UPDATE skills SET title='$title', percentage='$percent' WHERE id=$id";
     $result = mysqli_query($conn, $sql);
 
-    if (!$result)  die("Database insertion failed" . mysqli_error($conn));
+    if($result) header("Location: ViewSkills.php?update_id=$id");
+    if(!$result) header("Location: Updateskills.php?update_id=$id");
 endif;
+
+if(isset($_GET['update_id'])):
+    $id = $_GET['update_id'];
+
+    $sql = "SELECT * FROM skills where id=$id";
+    $result = mysqli_query($conn, $sql);
+
+    $row = mysqli_fetch_object($result);
 
 ?>
 
@@ -207,22 +216,21 @@ endif;
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Add New skills Content</h5>
+                                            <h5>Update skills Content</h5>
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <form method="POST" action="skills.php">
-                                                        <div class="form-group">
-                                                            <label for="name">skills Name: </label>
-                                                            <input type="text" class="form-control" name="title" placeholder="Enter skills">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="percentage">percentage: </label>
-                                                            <input class="form-control" type="number" placeholder="Enter percentage" id="" name="percent">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </form>
+                                                <form action="Updateskills.php" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                                                        <label for="text" class="from-label mb-2">Enter Your Skill title:</label>
+                                                        <input type="text" class="form-control input-default mb-4" placeholder="Enter Your Skill" name="title" value="<?php echo $row->title; ?>">
+                                                        <label for="text" class="from-label mb-2">Enter Percentage:</label>
+                                                        <input class="form-control" type="number" id="" name="percent" value="<?php echo $row->percentage;?>">
+                                                        <input type="submit" name="submit" class="btn btn-primary mt-4">
+                                                    </div>
+                                    </form>
                                                 </div>
                                             </div>
 
@@ -240,7 +248,6 @@ endif;
         </div>
     </div>
     <!-- [ Main Content ] end -->
-    <!-- Warning Section Ends -->
 
     <!-- Required Js -->
     <script src="assets/js/vendor-all.min.js"></script>
@@ -250,3 +257,5 @@ endif;
 </body>
 
 </html>
+
+<?php endif; ?>

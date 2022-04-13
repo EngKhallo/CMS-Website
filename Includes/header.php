@@ -13,11 +13,11 @@
                 <h2>About</h2>
             </a>
         </li>
-        <!-- <li class="icon-box">
+        <li class="icon-box">
             <i class="fa fa-briefcase"></i>
             <a href="portfolio.php">
                 <h2>Portfolio</h2>
-            </a> -->
+            </a>
         </li>
         <li class="icon-box">
             <i class="fa fa-envelope-open"></i>
