@@ -1,3 +1,7 @@
+<?php
+include './Admin/config/connection.php';
+$conn = connect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,11 +48,19 @@
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
-                        <img src="./img/projects/project_1.jpg" alt="Portolio Image" />
-                        <div><span>Amal Bank</span></div>
+                        <?php 
+                            $sql = "select * from portfolio where id = 1";
+                            $result = mysqli_query($conn, $sql);
+
+                            while($row = mysqli_fetch_object($result)):
+                        ?>
+                        <img src="./img/projects/<?php echo $row->preview_image; ?>" alt="Portolio Image" />
+                        <div><span><?php echo $row->title; ?></span></div>
+                        <?php endwhile; ?>
                     </figure>
                 </li>
                 <!-- Portfolio Item Ends -->
+
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
@@ -57,6 +69,7 @@
                     </figure>
                 </li>
                 <!-- Portfolio Item Ends -->
+
                 <!-- Portfolio Item Starts -->
                 <li>
                     <figure>
@@ -122,28 +135,35 @@
                 <!-- Portfolio Item Detail Starts -->
                 <li>
                     <figure>
+                            <?php
+                                $sql = "select * from portfolio where id = 1";
+                                $result = mysqli_query($conn, $sql);
+
+                                while ($row = mysqli_fetch_object($result)):
+                            ?>
                         <!-- Project Details Starts -->
                         <figcaption>
-                            <h3>Human Resource Management System</h3>
+                            <h3><?php echo $row->title; ?></h3>
                             <div class="row open-sans-font">
                                 <div class="col-12 col-sm-6 mb-2">
-                                    <i class="fa fa-file-text-o pr-2"></i><span class="project-label">Project </span>: <span class="ft-wt-600 uppercase">Website</span>
+                                    <i class="fa fa-file-text-o pr-2"></i><span class="project-label">Project </span>: <span class="ft-wt-600 uppercase"><?php echo $row->project; ?></span>
                                 </div>
                                 <div class="col-12 col-sm-6 mb-2">
-                                    <i class="fa fa-user-o pr-2"></i><span class="project-label">Client </span>: <span class="ft-wt-600 uppercase">Bader Transport</span>
+                                    <i class="fa fa-user-o pr-2"></i><span class="project-label">Client </span>: <span class="ft-wt-600 uppercase"><?php echo $row->client; ?></span>
                                 </div>
                                 <div class="col-12 col-sm-6 mb-2">
-                                    <i class="fa fa-code pr-2"></i><span class="project-label">Langages </span>: <span class="ft-wt-600 uppercase">HTML, CSS, Javascript</span>
+                                    <i class="fa fa-code pr-2"></i><span class="project-label">Langages </span>: <span class="ft-wt-600 uppercase"><?php echo $row->languages; ?></span>
                                 </div>
                                 <div class="col-12 col-sm-6 mb-2">
-                                    <i class="fa fa-external-link pr-2"></i><span class="project-label">Preview </span>: <span class="ft-wt-600 uppercase"><a href="https://www.badertransport.net" target="_blank">www.badertransport.net</a></span>
+                                    <i class="fa fa-external-link pr-2"></i><span class="project-label">Preview </span>: <span class="ft-wt-600 uppercase"><?php echo $row->preview; ?></span>
                                 </div>
                             </div>
                         </figcaption>
                         <!-- Project Details Ends -->
                         <!-- Main Project Content Starts -->
-                        <img src="./img/projects/project_1.jpg" alt="Portolio Image" />
+                        <img src="./img/projects/<?php echo $row->content_img1?>" alt="Portolio Image" />
                         <!-- Main Project Content Ends -->
+                        <?php endwhile ; ?>
                     </figure>
                 </li>
                 <!-- Portfolio Item Detail Ends -->
