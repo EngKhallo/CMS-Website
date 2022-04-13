@@ -1,18 +1,27 @@
 <?php
 include './config/connection.php';
 
-if (isset($_POST) && !empty($_POST)) :
-    $conn = connect();
+$conn = connect();
 
+if(isset($_POST['submit'])):
+    $id = $_POST['id'];
     $title = $_POST['title'];
     $number = $_POST['number'];
 
-    $sql = "INSERT INTO achieves (title, number)
-            values('$title','$number')";
+    $sql = "UPDATE achieves SET title='$title', number='$number' WHERE id=$id";
     $result = mysqli_query($conn, $sql);
 
-    if (!$result)  die("Database insertion failed" . mysqli_error($conn));
+    if($result) header("Location: Viewachieves.php?update_id=$id");
+    if(!$result) header("Location: Updateachieves.php?update_id=$id");
 endif;
+
+if(isset($_GET['update_id'])):
+    $id = $_GET['update_id'];
+
+    $sql = "SELECT * FROM achieves where id=$id";
+    $result = mysqli_query($conn, $sql);
+
+    $row = mysqli_fetch_object($result);
 
 ?>
 
@@ -188,12 +197,12 @@ endif;
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="page-header-title">
-                                        <h5 class="m-b-10">Achieved Content</h5>
+                                        <h5 class="m-b-10">achieves Content</h5>
                                     </div>
                                     <ul class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:">Achives</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:">New Achieve</a></li>
+                                        <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-achieves"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:">achieves</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:">New achieves</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -207,22 +216,21 @@ endif;
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Add New Achieved Content</h5>
+                                            <h5>Update achieves Content</h5>
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <form method="POST" action="Achieves.php">
-                                                        <div class="form-group">
-                                                            <label for="title">Achieve Title: </label>
-                                                            <input type="text" class="form-control" name="title" placeholder="Enter Title">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="number">Number: </label>
-                                                            <input class="form-control" type="number" placeholder="Enter Number" id="" name="number">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </form>
+                                                <form action="UpdateAchieves.php" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                                                        <label for="text" class="from-label mb-2">Enter Your title:</label>
+                                                        <input type="text" class="form-control input-default mb-4" placeholder="Enter Your title" name="title" value="<?php echo $row->title; ?>">
+                                                        <label for="text" class="from-label mb-2">Enter Number:</label>
+                                                        <input class="form-control" type="number" id="" name="number" value="<?php echo $row->number;?>">
+                                                        <input type="submit" name="submit" class="btn btn-primary mt-4">
+                                                    </div>
+                                    </form>
                                                 </div>
                                             </div>
 
@@ -240,6 +248,7 @@ endif;
         </div>
     </div>
     <!-- [ Main Content ] end -->
+
     <!-- Required Js -->
     <script src="assets/js/vendor-all.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -248,3 +257,5 @@ endif;
 </body>
 
 </html>
+
+<?php endif; ?>
