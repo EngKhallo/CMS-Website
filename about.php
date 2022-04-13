@@ -390,6 +390,7 @@ $conn = connect();
                 <div class="col-lg-6 m-15px-tb">
                     <div class="resume-box">
                         <ul>
+                            <!-- experience 1 start -->
                             <li>
                                 <div class="icon">
                                     <i class="fa fa-briefcase"></i>
@@ -432,80 +433,138 @@ $conn = connect();
                                     <?php endwhile; ?>
                                 </p>
                             </li>
+                            <!-- experience 1 end -->
+                            
+
+                            <!-- experience 2 start -->
                             <li>
                                 <div class="icon">
                                     <i class="fa fa-briefcase"></i>
                                 </div>
-                                <span class="time open-sans-font text-uppercase">2019 - 2021</span>
-                                <h5 class="poppins-font text-uppercase">Head of Software Developement Department <span class="place open-sans-font">Somtel Group</span></h5>
+                                <?php 
+                                    $sql = 'select * from experience where id = 2';
+                                    $result = mysqli_query($conn, $sql);
+                                    while ($row = mysqli_fetch_object($result)):
+                                ?>
+                                <span class="time open-sans-font text-uppercase"><?php echo $row->time; ?></span>
+                                <h5 class="poppins-font text-uppercase"><?php echo $row->title; ?> <span class="place open-sans-font"><?php echo $row->place; ?></span></h5>
                                 <p class="open-sans-font">
-                                    As a Head of Software Development, I oversee multiple software engineering teams and lead from a technical and strategic preceptive to help the business deliver a world-class, real-time energy trading platform.
-                                </p>
+                                <?php echo $row->information; ?>
+                                 </p>
+
+                               <?php endwhile; ?>
                             </li>
+                            <!-- experience 2 end -->
+
+
+                            <!-- experience 3 start -->                    
                             <li>
                                 <div class="icon">
                                     <i class="fa fa-briefcase"></i>
                                 </div>
-                                <span class="time open-sans-font text-uppercase">2017 - 2019</span>
-                                <h5 class="poppins-font text-uppercase">Senior Developer <span class="place open-sans-font">Dahabshiil Group</span></h5>
+                                <?php 
+                                    $sql = "select * from experience where id =3";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    while ($row = mysqli_fetch_object($result)):
+                                ?>
+                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
+                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
                                 <p class="open-sans-font">
-                                    During my time in this role, I was the lead on re-structuring the development team to incorporate Agile methodologies.
-                                    <br>
-                                    Using Agile ways of working I led on developing and delivering key in house projects closely aligned to user needs such as eDahab to Bank remittance integration, the Dahabshiil Bank financial system, integration between NGO's and eDahab, developed Muraad USSD Service with over 100,000 users per month and TrueCable USSD Service and with more then 10,000 users per month.
+                                <?php echo $row->information; ?>
                                 </p>
+                                <?php endwhile; ?>
                             </li>
+                            <!-- experience 3 end -->
+
+
+                            <!-- experience 4 start -->                    
                             <li>
                                 <div class="icon">
                                     <i class="fa fa-briefcase"></i>
                                 </div>
-                                <span class="time open-sans-font text-uppercase">2012 - 2017</span>
-                                <h5 class="poppins-font text-uppercase">Junior Developer <span class="place open-sans-font">Dahabshiil Group</span></h5>
+                                <?php 
+                                    $sql = "select * from experience where id =4";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    while ($row = mysqli_fetch_object($result)):
+                                ?>
+                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
+                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
                                 <p class="open-sans-font">
-                                    Implemented Enterprise Resourcing Planning tool to oversee business process management.
-                                    <br>
-                                    Used Python and SQL to implement 19 modules with the initial launch having 100 users and now more than 2000 users in Somaliland
+                                <?php echo $row->information; ?>
                                 </p>
+                                <?php endwhile; ?>
                             </li>
+                            <!-- experience 4 end -->
+
                         </ul>
+
+
                     </div>
                 </div>
+
+
                 <div class="col-lg-6 m-15px-tb">
                     <div class="resume-box">
                         <ul>
+                           <!-- education 1 start -->                    
                             <li>
                                 <div class="icon">
-                                    <i class="fa fa-graduation-cap"></i>
+                                    <i class="fa fa-briefcase"></i>
                                 </div>
-                                <span class="time open-sans-font text-uppercase">Currently </span>
-                                <h5 class="poppins-font text-uppercase">Master Degree <span class="place open-sans-font">McGill University</span></h5>
-                                <p class="open-sans-font">Now, I am doing my Master Degree of Business Development - Strategy Plan and I will develop my career like that.</p>
+                                <?php 
+                                    $sql = "select * from experience where id =5";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    while ($row = mysqli_fetch_object($result)):
+                                ?>
+                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
+                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
+                                <p class="open-sans-font">
+                                <?php echo $row->information; ?>
+                                </p>
+                                <?php endwhile; ?>
                             </li>
+                            <!-- education 1 end -->
+
                             <li>
                                 <div class="icon">
-                                    <i class="fa fa-graduation-cap"></i>
+                                    <i class="fa fa-briefcase"></i>
                                 </div>
-                                <span class="time open-sans-font text-uppercase">2015</span>
-                                <h5 class="poppins-font text-uppercase">Master Degree <span class="place open-sans-font">Kenyata Univeristy</span></h5>
-                                <p class="open-sans-font">While studying for a Master's degree in Business Administration I get the opportunity
-                                    to develop my skills that will be very useful in selling products, managing the financial health of my company,
-                                    interpreting performance data, keeping employees motivated, keeping efficiency high,
-                                    and making impactful business choices that drive results.</p>
+                                <?php 
+                                    $sql = "select * from experience where id =6";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    while ($row = mysqli_fetch_object($result)):
+                                ?>
+                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
+                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
+                                <p class="open-sans-font">
+                                <?php echo $row->information; ?>
+                                </p>
+                                <?php endwhile; ?>
                             </li>
+
+                            <!-- Education 2 start -->
                             <li>
                                 <div class="icon">
-                                    <i class="fa fa-graduation-cap"></i>
+                                    <i class="fa fa-briefcase"></i>
                                 </div>
-                                <span class="time open-sans-font text-uppercase">2012</span>
-                                <h5 class="poppins-font text-uppercase">Bachelor Degree <span class="place open-sans-font">University of Hargeisa</span></h5>
-                                <p class="open-sans-font">Grade: B+Grade: B+ <br>
-                                    Activities and societies: How to build a Programs and also Websites
-                                    BoCS Information Communication Technology University of Hargeisa <br>
-                                    * Network Design & Management <br>
-                                    * Advanced Networking Technologies (CCNP) <br>
-                                    * Software Development using: VB.NET,ASP.NET, XML, HTML and Electronic Commerce <br>
-                                    * Database Administration using: Oracle 9, SQL Server <br>
-                                    * Business Strategy & Organisation and management (HR)</p>
+                                <?php 
+                                    $sql = "select * from experience where id =7";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    while ($row = mysqli_fetch_object($result)):
+                                ?>
+                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
+                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
+                                <p class="open-sans-font">
+                                <?php echo $row->information; ?>
+                                </p>
+                                <?php endwhile; ?>
                             </li>
+                            <!-- Education 2 end -->
                         </ul>
                     </div>
                 </div>

@@ -1,24 +1,27 @@
 <?php
 include './config/connection.php';
 
+
 $conn = connect();
-
 if (isset($_POST['submit'])) :
-    $id = $_POST['id'];
-    $about = $_POST['about'];
-    $image = $_POST['image'];
 
-    $sql = "UPDATE home SET About='$about', Image='$image' WHERE id=$id";
+    $id = $_POST['id'];
+    $time = $_POST['time'];
+    $title = $_POST['title'];
+    $place = $_POST['place'];
+    $information = $_POST['information'];
+
+    $sql = "UPDATE experience SET time ='$time' , title='$title', place='$place', information='$information' WHERE id=$id";
     $result = mysqli_query($conn, $sql);
 
-    if ($result) header("Location: ViewHome.php?update_id=$id");
-    if (!$result) header("Location: UpdateHome.php?update_id=$id");
+    if ($result) header("Location: ViewExperiences.php?update_id=$id");
+    if (!$result) header("Location: UpdateExperiences.php?update_id=$id");
 endif;
 
 if (isset($_GET['update_id'])) :
     $id = $_GET['update_id'];
 
-    $sql = "SELECT * FROM home where id=$id";
+    $sql = "SELECT * FROM experience where id=$id";
     $result = mysqli_query($conn, $sql);
 
     $row = mysqli_fetch_object($result);
@@ -52,14 +55,8 @@ if (isset($_GET['update_id'])) :
         <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
         <!-- vendor css -->
         <link rel="stylesheet" href="assets/css/style.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <?php include './includes/summernote.php' ?>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     </head>
 
     <body>
@@ -204,12 +201,12 @@ if (isset($_GET['update_id'])) :
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <div class="page-header-title">
-                                            <h5 class="m-b-10">Home Content</h5>
+                                            <h5 class="m-b-10">experience Content</h5>
                                         </div>
                                         <ul class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                                            <li class="breadcrumb-item"><a href="javascript:">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript:">New Home</a></li>
+                                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-experience"></i></a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:">experience</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:">New experience</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -223,23 +220,27 @@ if (isset($_GET['update_id'])) :
                                     <div class="col-sm-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5>Update Home Content</h5>
+                                                <h5>Update experience Content</h5>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <form action="UpdateHome.php" method="POST">
+                                                        <form action="UpdateExperiences.php" method="POST">
                                                             <div class="form-group">
                                                                 <input type="hidden" name="id" value="<?php echo $row->id; ?>">
-                                                                <label for="text" class="from-label mb-2">Enter Image:</label>
-                                                                <input class="form-control" type="file" id="formFile" name="image" value="<?php echo $row->Image; ?>"> <br>
-                                                                <label for="text" class="from-label mb-2">Enter Your About:</label>
-                                                                <textarea name="about" id="summernote" cols="30" rows="10" class="summernote form-control"><?php echo $row->About; ?></textarea>
+                                                                <label for="text" class="from-label mb-2">Enter Your Exeperience title:</label>
+                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your title" name="title" value="<?php echo $row->title; ?>">
+                                                                <label for="text" class="from-label mb-2">Enter Your time:</label>
+                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your time" name="time" value="<?php echo $row->time; ?>">
+                                                                <label for="text" class="from-label mb-2">Enter place:</label>
+                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your place" name="place" value="<?php echo $row->place; ?>">
+                                                                <label for="text" class="from-label mb-2">Enter information:</label>
+                                                                <textarea name="information" id="summernote" cols="30" rows="10" class="summernote form-control"><?php echo $row->information; ?></textarea>
                                                                 <input type="submit" name="submit" class="btn btn-primary mt-4">
                                                             </div>
                                                         </form>
                                                         <script>
-                                                            $('#summernote').summernote({
+                                                            $('.summernote').summernote({
                                                                 placeholder: 'Enter your about here ...',
                                                                 tabsize: 5,
                                                                 height: 150
@@ -264,13 +265,9 @@ if (isset($_GET['update_id'])) :
         <!-- [ Main Content ] end -->
 
         <!-- Required Js -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="assets/js/vendor-all.min.js"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
         <script src="assets/js/pcoded.min.js"></script>
-
-
 
     </body>
 
