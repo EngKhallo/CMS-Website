@@ -3,7 +3,7 @@ include './config/connection.php';
 
 $conn = connect();
 
-if(isset($_POST['submit'])):
+if (isset($_POST['submit'])):
     $id = $_POST['id'];
     $title = $_POST['title'];
     $percent = $_POST['percent'];

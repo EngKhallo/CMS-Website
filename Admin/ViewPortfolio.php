@@ -204,7 +204,7 @@ $result = mysqli_query($conn, $query);
                                             </div>
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
-                                                    <table class="table table-striped table-bordered zero-configuration">
+                                                    <table class="table table-responsive table-striped table-bordered zero-configuration">
                                                         <thead>
                                                             <tr>
                                                                 <th>Title</th>
