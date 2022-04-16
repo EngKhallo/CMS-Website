@@ -49,6 +49,13 @@
                         </ul>
                     </li>
                     <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">Education</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="Education.php" class="">New Education</a></li>
+                            <li class=""><a href="ViewEducation.php" class="">View Education</a></li>
+                        </ul>
+                    </li>
+                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
                         <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-cpu"></i></span><span class="pcoded-mtext">Portfolio</span></a>
                         <ul class="pcoded-submenu">
                             <li class=""><a href="Portfolio.php" class="">New Portfolio</a></li>

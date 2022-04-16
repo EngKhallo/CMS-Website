@@ -94,7 +94,15 @@ $conn = connect();
                                         <?php echo $row->number; ?>
                                     <?php endwhile; ?>
                                 </h3>
-                                <p class="open-sans-font m-0 position-relative text-uppercase">years of <span class="d-block">experience</span></p>
+                                <p class="open-sans-font m-0 position-relative text-uppercase">
+                                    <?php
+                                    $sql = "select title from achieves where id =1";
+                                    $result = mysqli_query($conn, $sql);
+                                    while ($row = mysqli_fetch_object($result)) :
+                                    ?>
+                                        <?php echo $row->title; ?>
+                                    <?php endwhile; ?>
+                                    </span></p>
                             </div>
                         </div>
                         <div class="col-6">
@@ -108,11 +116,19 @@ $conn = connect();
                                         <?php echo $row->number; ?>
                                     <?php endwhile; ?>
                                 </h3>
-                                <p class="open-sans-font m-0 position-relative text-uppercase">completed <span class="d-block">projects</span></p>
+                                <p class="open-sans-font m-0 position-relative text-uppercase">
+                                    <?php
+                                    $sql = "select title from achieves where id =2";
+                                    $result = mysqli_query($conn, $sql);
+                                    while ($row = mysqli_fetch_object($result)) :
+                                    ?>
+                                        <?php echo $row->title; ?>
+                                    <?php endwhile; ?>
+                                    </span></p>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="box-stats">
+                            <div class="box-stats with-margin">
                                 <h3 class="poppins-font position-relative">
                                     <?php
                                     $sql = "select number from achieves where id =3";
@@ -122,11 +138,19 @@ $conn = connect();
                                         <?php echo $row->number; ?>
                                     <?php endwhile; ?>
                                 </h3>
-                                <p class="open-sans-font m-0 position-relative text-uppercase">Happy<span class="d-block">customers</span></p>
+                                <p class="open-sans-font m-0 position-relative text-uppercase">
+                                    <?php
+                                    $sql = "select title from achieves where id =3";
+                                    $result = mysqli_query($conn, $sql);
+                                    while ($row = mysqli_fetch_object($result)) :
+                                    ?>
+                                        <?php echo $row->title; ?>
+                                    <?php endwhile; ?>
+                                    </span></p>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="box-stats">
+                            <div class="box-stats with-margin">
                                 <h3 class="poppins-font position-relative">
                                     <?php
                                     $sql = "select number from achieves where id =4";
@@ -136,7 +160,15 @@ $conn = connect();
                                         <?php echo $row->number; ?>
                                     <?php endwhile; ?>
                                 </h3>
-                                <p class="open-sans-font m-0 position-relative text-uppercase">awards <span class="d-block">won</span></p>
+                                <p class="open-sans-font m-0 position-relative text-uppercase">
+                                    <?php
+                                    $sql = "select title from achieves where id =4";
+                                    $result = mysqli_query($conn, $sql);
+                                    while ($row = mysqli_fetch_object($result)) :
+                                    ?>
+                                        <?php echo $row->title; ?>
+                                    <?php endwhile; ?>
+                                    </span></p>
                             </div>
                         </div>
                     </div>
@@ -152,7 +184,7 @@ $conn = connect();
 
 
                 <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p95">
+                    <div class="c100 p29">
                         <span>
                             <?php
                             $sql = "select percentage from skills where id =1";
@@ -391,112 +423,33 @@ $conn = connect();
                     <div class="resume-box">
                         <ul>
                             <!-- experience 1 start -->
-                            <li>
-                                <div class="icon">
-                                    <i class="fa fa-briefcase"></i>
-                                </div>
-                                <span class="time open-sans-font text-uppercase">
-                                    <?php
-                                    $sql = "select time from experience where id =1";
-                                    $result = mysqli_query($conn, $sql);
-                                    while ($row = mysqli_fetch_object($result)) :
-                                    ?>
+                            <?php
+                            $sql = "select * from experience order by id asc";
+                            $result = mysqli_query($conn, $sql);
+
+                            while ($row = mysqli_fetch_object($result)) :
+                            ?>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fa fa-briefcase"></i>
+                                    </div>
+                                    <span class="time open-sans-font text-uppercase">
                                         <?php echo $row->time; ?>
-                                    <?php endwhile; ?>
-                                </span>
-                                <h5 class="poppins-font text-uppercase">
-                                    <?php
-                                    $sql = "select title from experience where id =1";
-                                    $result = mysqli_query($conn, $sql);
-                                    while ($row = mysqli_fetch_object($result)) :
-                                    ?>
-                                        <?php echo $row->title; ?>
-                                    <?php endwhile; ?>
-                                    <span class="place open-sans-font">
-                                        <?php
-                                        $sql = "select place from experience where id =1";
-                                        $result = mysqli_query($conn, $sql);
-                                        while ($row = mysqli_fetch_object($result)) :
-                                        ?>
-                                            <?php echo $row->place; ?>
-                                        <?php endwhile; ?>
                                     </span>
+                                    <h5 class="poppins-font text-uppercase">
+                                        <?php echo $row->title; ?>
+                                        <span class="place open-sans-font">
+                                            <?php echo $row->place; ?>
+                                        </span>
 
-                                </h5>
-                                <p class="open-sans-font">
-                                <?php
-                                    $sql = "select information from experience where id =1";
-                                    $result = mysqli_query($conn, $sql);
-                                    while ($row = mysqli_fetch_object($result)) :
-                                    ?>
+                                    </h5>
+                                    <p class="open-sans-font">
                                         <?php echo $row->information; ?>
-                                    <?php endwhile; ?>
-                                </p>
-                            </li>
+                                    </p>
+                                </li>
+
+                            <?php endwhile; ?>
                             <!-- experience 1 end -->
-                            
-
-                            <!-- experience 2 start -->
-                            <li>
-                                <div class="icon">
-                                    <i class="fa fa-briefcase"></i>
-                                </div>
-                                <?php 
-                                    $sql = 'select * from experience where id = 2';
-                                    $result = mysqli_query($conn, $sql);
-                                    while ($row = mysqli_fetch_object($result)):
-                                ?>
-                                <span class="time open-sans-font text-uppercase"><?php echo $row->time; ?></span>
-                                <h5 class="poppins-font text-uppercase"><?php echo $row->title; ?> <span class="place open-sans-font"><?php echo $row->place; ?></span></h5>
-                                <p class="open-sans-font">
-                                <?php echo $row->information; ?>
-                                 </p>
-
-                               <?php endwhile; ?>
-                            </li>
-                            <!-- experience 2 end -->
-
-
-                            <!-- experience 3 start -->                    
-                            <li>
-                                <div class="icon">
-                                    <i class="fa fa-briefcase"></i>
-                                </div>
-                                <?php 
-                                    $sql = "select * from experience where id =3";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    while ($row = mysqli_fetch_object($result)):
-                                ?>
-                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
-                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
-                                <p class="open-sans-font">
-                                <?php echo $row->information; ?>
-                                </p>
-                                <?php endwhile; ?>
-                            </li>
-                            <!-- experience 3 end -->
-
-
-                            <!-- experience 4 start -->                    
-                            <li>
-                                <div class="icon">
-                                    <i class="fa fa-briefcase"></i>
-                                </div>
-                                <?php 
-                                    $sql = "select * from experience where id =4";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    while ($row = mysqli_fetch_object($result)):
-                                ?>
-                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
-                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
-                                <p class="open-sans-font">
-                                <?php echo $row->information; ?>
-                                </p>
-                                <?php endwhile; ?>
-                            </li>
-                            <!-- experience 4 end -->
 
                         </ul>
 
@@ -504,67 +457,37 @@ $conn = connect();
                     </div>
                 </div>
 
-
                 <div class="col-lg-6 m-15px-tb">
                     <div class="resume-box">
                         <ul>
-                           <!-- education 1 start -->                    
-                            <li>
-                                <div class="icon">
-                                    <i class="fa fa-briefcase"></i>
-                                </div>
-                                <?php 
-                                    $sql = "select * from experience where id =5";
-                                    $result = mysqli_query($conn, $sql);
+                            <!-- educations 1 start -->
+                            <?php
+                            $sql = "select * from educations order by id asc";
+                            $result = mysqli_query($conn, $sql);
 
-                                    while ($row = mysqli_fetch_object($result)):
-                                ?>
-                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
-                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
-                                <p class="open-sans-font">
-                                <?php echo $row->information; ?>
-                                </p>
-                                <?php endwhile; ?>
-                            </li>
-                            <!-- education 1 end -->
+                            while ($row = mysqli_fetch_object($result)) :
+                            ?>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fa fa-briefcase"></i>
+                                    </div>
+                                    <span class="time open-sans-font text-uppercase">
+                                        <?php echo $row->time; ?>
+                                    </span>
+                                    <h5 class="poppins-font text-uppercase">
+                                        <?php echo $row->title; ?>
+                                        <span class="place open-sans-font">
+                                            <?php echo $row->place; ?>
+                                        </span>
 
-                            <li>
-                                <div class="icon">
-                                    <i class="fa fa-briefcase"></i>
-                                </div>
-                                <?php 
-                                    $sql = "select * from experience where id =6";
-                                    $result = mysqli_query($conn, $sql);
+                                    </h5>
+                                    <p class="open-sans-font">
+                                        <?php echo $row->information; ?>
+                                    </p>
+                                </li>
 
-                                    while ($row = mysqli_fetch_object($result)):
-                                ?>
-                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
-                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
-                                <p class="open-sans-font">
-                                <?php echo $row->information; ?>
-                                </p>
-                                <?php endwhile; ?>
-                            </li>
-
-                            <!-- Education 2 start -->
-                            <li>
-                                <div class="icon">
-                                    <i class="fa fa-briefcase"></i>
-                                </div>
-                                <?php 
-                                    $sql = "select * from experience where id =7";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    while ($row = mysqli_fetch_object($result)):
-                                ?>
-                                <span class="time open-sans-font text-uppercase"><?php echo $row->time?></span>
-                                <h5 class="poppins-font text-uppercase"><?php echo $row->title?><span class="place open-sans-font"><?php echo $row->place?></span></h5>
-                                <p class="open-sans-font">
-                                <?php echo $row->information; ?>
-                                </p>
-                                <?php endwhile; ?>
-                            </li>
-                            <!-- Education 2 end -->
+                            <?php endwhile; ?>
+                            <!-- educations 1 end -->
                         </ul>
                     </div>
                 </div>
