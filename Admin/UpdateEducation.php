@@ -2,19 +2,29 @@
 include './config/connection.php';
 
 
+$conn = connect();
 if (isset($_POST['submit'])) :
-    $conn = connect();
+
+    $id = $_POST['id'];
     $time = $_POST['time'];
     $title = $_POST['title'];
     $place = $_POST['place'];
     $information = $_POST['information'];
 
-    $sql = "INSERT INTO educations (time, title, place, information) 
-    VALUES ('$time', '$title', '$place', '$information')";
+    $sql = "UPDATE educations SET time ='$time' , title='$title', place='$place', information='$information' WHERE id=$id";
     $result = mysqli_query($conn, $sql);
 
-    if (!$result)  die("Database insertion failed" . mysqli_error($conn));
+    if ($result) header("Location: ViewEducation.php?update_id=$id");
+    if (!$result) header("Location: UpdateEducations.php?update_id=$id");
 endif;
+
+if (isset($_GET['update_id'])) :
+    $id = $_GET['update_id'];
+
+    $sql = "SELECT * FROM educations where id=$id";
+    $result = mysqli_query($conn, $sql);
+
+    $row = mysqli_fetch_object($result);
 
 ?>
 
@@ -215,16 +225,17 @@ endif;
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <form action="Education.php" method="POST">
+                                                        <form action="UpdateEducation.php" method="POST">
                                                             <div class="form-group">
+                                                                <input type="hidden" name="id" value="<?php echo $row->id; ?>">
                                                                 <label for="text" class="from-label mb-2">Enter Your Education title:</label>
-                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your title" name="title" >
+                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your title" name="title" value="<?php echo $row->title; ?>">
                                                                 <label for="text" class="from-label mb-2">Enter Your time:</label>
-                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your time" name="time" >
+                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your time" name="time" value="<?php echo $row->time; ?>">
                                                                 <label for="text" class="from-label mb-2">Enter place:</label>
-                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your place" name="place" >
+                                                                <input type="text" class="form-control input-default mb-4" placeholder="Enter Your place" name="place" value="<?php echo $row->place; ?>">
                                                                 <label for="text" class="from-label mb-2">Enter information:</label>
-                                                                <textarea name="information" id="summernote" cols="30" rows="10" class="summernote form-control"></textarea>
+                                                                <textarea name="information" id="summernote" cols="30" rows="10" class="summernote form-control"><?php echo $row->information; ?></textarea>
                                                                 <input type="submit" name="submit" class="btn btn-primary mt-4">
                                                             </div>
                                                         </form>
@@ -261,3 +272,5 @@ endif;
     </body>
 
     </html>
+
+<?php endif; ?>
