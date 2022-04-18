@@ -184,7 +184,7 @@ $conn = connect();
 
 
                 <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p29">
+                    <div class="c100 p90">
                         <span>
                             <?php
                             $sql = "select percentage from skills where id =1";

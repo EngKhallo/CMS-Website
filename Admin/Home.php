@@ -220,12 +220,11 @@ endif;
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-9">
                                                     <form method="POST" action="Home.php">
                                                         <div class="form-group">
                                                             <label for="about">Home About: </label>
-                                                            <!-- <input type="text" class="form-control" id="summernote" name="about" placeholder="Enter Home"> -->
-                                                            <textarea name="about" id="summernote" cols="30" rows="10" class="summernote form-control"></textarea>
+                                                            <textarea name="about" id="summernote" cols="60" rows="15" class="summernote form-control"></textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="image">Image: </label>

@@ -42,13 +42,19 @@ $conn = connect();
     <section class="container-fluid main-container container-home p-0 revealator-slideup revealator-once revealator-delay1">
         <div class="color-block d-none d-lg-block"></div>
         <div class="row home-details-container align-items-center">
-            <div class="col-lg-4 bg position-fixed d-lg-block">
+            <div class="col-lg-4  position-fixed d-lg-block">
                 <?php
                 $sql = "SELECT Image FROM home WHERE id=1";
                 $result = mysqli_query($conn, $sql);
 
                 while ($row = mysqli_fetch_object($result)) : ?>
-                    <img src="./Admin/Images/<?php echo $row->Image; ?>" class="img-fluid main-img-mobile d-none d-sm-block d-lg-none" alt="No Image at all"/>
+                <div style="margin-right: -100px" class=" card">
+                <div  class="bg-now">
+
+                    <img style="width:100%" src="./Admin/Images/hakaale.jpg" class="" alt="No Image at all"/>
+                </div>
+
+                </div>
                 <?php endwhile; ?>
             </div>
             <div class="col-12 col-lg-8 offset-lg-4 home-details text-left text-sm-center text-lg-left">
