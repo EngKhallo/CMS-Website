@@ -182,17 +182,16 @@ $conn = connect();
                     <h3 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">My Skills</h3>
                 </div>
 
+                <?php
+                            $sql = "select * from skills order by id asc";
+                            $result = mysqli_query($conn, $sql);
 
+                            while ($row = mysqli_fetch_object($result)) :
+                            ?>                    
                 <div class="col-6 col-md-3 mb-3 mb-sm-5">
                     <div class="c100 p90">
                         <span>
-                            <?php
-                            $sql = "select percentage from skills where id =1";
-                            $result = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_object($result)) :
-                            ?>
                                 <?php echo $row->percentage; ?>
-                            <?php endwhile; ?>
                             %</span>
                         <div class="slice">
                             <div class="bar"></div>
@@ -200,212 +199,15 @@ $conn = connect();
                         </div>
                     </div>
                     <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
-                        <?php
-                        $sql = "select title from skills where id =1";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_object($result)) :
-                        ?>
                             <?php echo $row->title; ?>
-                        <?php endwhile; ?>
-                    </h6>
-                </div>
-
-
-
-                <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p97">
-                        <span>
-                            <?php
-                            $sql = "select percentage from skills where id =2";
-                            $result = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_object($result)) :
-                            ?>
-                                <?php echo $row->percentage; ?>
-                            <?php endwhile; ?>
-                            %</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
+                        </h6>
                     </div>
-                    <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
-                        <?php
-                        $sql = "select title from skills where id =2";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_object($result)) :
-                        ?>
-                            <?php echo $row->title; ?>
-                        <?php endwhile; ?>
-                    </h6>
-                </div>
-
-
-                <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p89">
-                        <span>
-                            <?php
-                            $sql = "select percentage from skills where id =3";
-                            $result = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_object($result)) :
-                            ?>
-                                <?php echo $row->percentage; ?>
-                                <?php endwhile; ?>%</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
-                        <?php
-                        $sql = "select title from skills where id =3";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_object($result)) :
-                        ?>
-                            <?php echo $row->title; ?>
-                        <?php endwhile; ?>
-                    </h6>
-                </div>
-
-
-
-                <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p85">
-                        <span><?php
-                                $sql = "select percentage from skills where id =4";
-                                $result = mysqli_query($conn, $sql);
-                                while ($row = mysqli_fetch_object($result)) :
-                                ?>
-                                <?php echo $row->percentage; ?>
-                                <?php endwhile; ?>%</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
-                        <?php
-                        $sql = "select title from skills where id =4";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_object($result)) :
-                        ?>
-                            <?php echo $row->title; ?>
-                        <?php endwhile; ?>
-                    </h6>
-                </div>
+                    <?php endwhile; ?>
 
 
 
 
-                <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p80">
-                        <span><?php
-                                $sql = "select percentage from skills where id =5";
-                                $result = mysqli_query($conn, $sql);
-                                while ($row = mysqli_fetch_object($result)) :
-                                ?>
-                                <?php echo $row->percentage; ?>
-                                <?php endwhile; ?>%</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
-                        <?php
-                        $sql = "select title from skills where id =5";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_object($result)) :
-                        ?>
-                            <?php echo $row->title; ?>
-                        <?php endwhile; ?>
-                    </h6>
-                </div>
-
-
-
-
-                <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p84">
-                        <span>
-                            <?php
-                            $sql = "select percentage from skills where id =6";
-                            $result = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_object($result)) :
-                            ?>
-                                <?php echo $row->percentage; ?>
-                            <?php endwhile; ?>
-                            %</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
-                        <?php
-                        $sql = "select title from skills where id =6";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_object($result)) :
-                        ?>
-                            <?php echo $row->title; ?>
-                        <?php endwhile; ?></h6>
-                </div>
-
-
-
-                <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p99">
-                        <span>
-                            <?php
-                            $sql = "select percentage from skills where id =7";
-                            $result = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_object($result)) :
-                            ?>
-                                <?php echo $row->percentage; ?>
-                            <?php endwhile; ?>
-                            %</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
-                        <?php
-                        $sql = "select title from skills where id =7";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_object($result)) :
-                        ?>
-                            <?php echo $row->title; ?>
-                        <?php endwhile; ?>
-                    </h6>
-                </div>
-
-
-
-                <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                    <div class="c100 p80">
-                        <span>
-                            <?php
-                            $sql = "select percentage from skills where id=8";
-                            $result = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_object($result)) :
-                            ?>
-                                <?php echo $row->percentage; ?>
-                            <?php endwhile; ?>
-                            %</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">
-                        <?php
-                        $sql = "select title from skills where id =8";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_object($result)) :
-                        ?>
-                            <?php echo $row->title; ?>
-                        <?php endwhile; ?></h6>
-                </div>
+           
 
 
             </div>
